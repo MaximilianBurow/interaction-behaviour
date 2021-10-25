@@ -2,5 +2,9 @@
   "name": "eu.3d-ready.interaction-behaviour",
   "version": "0.0.4",
   "unity": "2019.4",
-  "displayName": "Interaction Behaviours"
+  "displayName": "Interaction Behaviour",
+  "author": {
+    "name": "Max",
+    "email": "max.burow@3d-ready.eu"
+  }
 }
