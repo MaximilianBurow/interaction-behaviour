@@ -3,6 +3,10 @@
   "version": "0.0.6",
   "unity": "2019.4",
   "displayName": "Interaction Behaviour",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaximilianBurow/interaction-behaviour.git"
+  },
   "author": {
     "name": "Max",
     "email": "max.burow@3d-ready.eu"
