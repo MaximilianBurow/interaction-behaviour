@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace InteractionBehaviour {
     public class ClickHandler : MonoBehaviour
     {
-        [SerializeField] private Camera mainCamera;
+        [SerializeField] private Camera mainCamera = null;
         [SerializeField] private float maxRaycastDistance = 20f;
         [SerializeField] private float clickRate = 0.5f;
         [SerializeField] private float clickDuration = 0.5f;
@@ -15,7 +15,7 @@ namespace InteractionBehaviour {
         
         void Update()
         {
-            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
 
             if (Input.GetMouseButtonDown(0)) 
             {
