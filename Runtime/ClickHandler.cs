@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 namespace InteractionBehaviour {
     public class ClickHandler : MonoBehaviour
     {
-        [SerializeField] private Camera mainCamera = null;
+        public Camera MainCamera { get; internal set; }
         [SerializeField] private float maxRaycastDistance = 20f;
         [SerializeField] private float clickRate = 0.5f;
         [SerializeField] private float clickDuration = 0.5f;
@@ -33,7 +33,7 @@ namespace InteractionBehaviour {
         }
 
         private void HandleClick() {
-            var cam = mainCamera ?? Camera.main;
+            var cam = MainCamera ?? Camera.main;
             var ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, maxRaycastDistance)) {
                 var interactionBehaviours = hit.collider.gameObject.GetComponents<IInteractionBehaviour>();
