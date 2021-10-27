@@ -12,12 +12,7 @@ namespace InteractionBehaviour {
 
         private float nextClick = 0;
         private float mouseDownTime;
-
-        void Start() {
-            if (mainCamera == null) {
-                mainCamera = Camera.main;
-            }
-        }
+        
         void Update()
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
@@ -38,7 +33,8 @@ namespace InteractionBehaviour {
         }
 
         private void HandleClick() {
-            var ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            var cam = mainCamera ?? Camera.main;
+            var ray = cam.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit, maxRaycastDistance)) {
                 var interactionBehaviours = hit.collider.gameObject.GetComponents<IInteractionBehaviour>();
                 if (interactionBehaviours == null || interactionBehaviours.Length == 0) return;
