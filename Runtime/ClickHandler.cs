@@ -13,6 +13,11 @@ namespace InteractionBehaviour {
         private float nextClick = 0;
         private float mouseDownTime;
 
+        void Start() {
+            if (mainCamera == null) {
+                mainCamera = Camera.main;
+            }
+        }
         void Update()
         {
             if (EventSystem.current.IsPointerOverGameObject()) return;
