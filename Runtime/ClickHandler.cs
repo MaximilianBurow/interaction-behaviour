@@ -6,10 +6,12 @@ namespace InteractionBehaviour {
     public class ClickHandler : MonoBehaviour
     {
         public Camera MainCamera { get; internal set; }
+
+        public LayerMask LayerMask { get; set; }
+
         [SerializeField] private float maxRaycastDistance = 20f;
         [SerializeField] private float clickRate = 0.5f;
         [SerializeField] private float clickDuration = 0.5f;
-        [SerializeField] private LayerMask layerMask;
 
         private float nextClick = 0;
         private float mouseDownTime;
@@ -36,7 +38,7 @@ namespace InteractionBehaviour {
         private void HandleClick() {
             var cam = MainCamera ?? Camera.main;
             var ray = cam.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit, maxRaycastDistance, layerMask)) {
+            if (Physics.Raycast(ray, out RaycastHit hit, maxRaycastDistance, LayerMask)) {
                 var interactionBehaviours = hit.collider.gameObject.GetComponents<IInteractionBehaviour>();
                 if (interactionBehaviours == null || interactionBehaviours.Length == 0) return;
 
